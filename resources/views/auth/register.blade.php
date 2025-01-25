@@ -20,7 +20,7 @@
                     @csrf
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="name" name="name" id="name @error('name') is-invalid @enderror" class="form-control">
+                        <input type="name" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" id="email @error('email') is-invalid @enderror" class="form-control">
+                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -38,16 +38,16 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="new-password">
+                        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" autocomplete="new-password">
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
+                            <strong class="invalid-feedback" role="alert">
                                 {{ $message }}
-                            </span>
+                            </strong>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="password-confirm" class="form-label">Confirm Password</label>
-                        <input type="password" name="password_confirmation" id="password-confirm" class="form-control" required autocomplete="new-password">
+                        <input type="password" name="password_confirmation" id="password-confirm" class="form-control @error('password_confirmation') is-invalid @enderror" autocomplete="new-password">
                     </div>
                     <div class="forgot-login">
                         <div class="forgot">
@@ -65,5 +65,22 @@
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            let email = $('#email').val();
+            let password = $('#password').val();
+
+            let errro = false;
+
+            if(email = ''){
+                errro = true;
+
+                $('.email_group .invalid-feedback strong').text('The email field is required');
+            }
+
+        });
+    </script>
   </body>
 </html>

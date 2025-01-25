@@ -25,6 +25,12 @@ Route::group(['as' => 'login.', 'prefix' => 'login', 'namespace' => 'Auth'], fun
     Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('callback');
 });
 Route::get('/', function () {
-    return view('auth.login');
+    if(Auth::check() && Auth::user()->role->id == 1){
+        return redirect()->route('admin.dashboard');
+    }else if(Auth::check() && Auth::user()->role->id != 1) {
+        return redirect()->route('student.dashboard');
+    }else {
+        return view('auth.login');
+    }
 });
 

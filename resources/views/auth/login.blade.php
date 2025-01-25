@@ -18,7 +18,7 @@
             <div class="login-child  p-4">
                 <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 email_group">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
                         @error('email')
@@ -76,5 +76,6 @@
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
   </body>
 </html>
